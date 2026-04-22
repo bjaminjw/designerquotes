@@ -103,10 +103,8 @@ const designers = [
   }
 ];
 
-// Change quote once per day
-const today = new Date();
-const dayNumber = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
-const pick = designers[dayNumber % designers.length];
+// Change quote every page reload
+const pick = designers[Math.floor(Math.random() * designers.length)];
 
 // Display content
 document.getElementById("quote").textContent = `"${pick.quote}"`;
