@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Fashion Quote Widget</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: Georgia, serif;
+      background: #f8f5f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .card {
+      max-width: 300px;
+      text-align: center;
+    }
+
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 16px;
+    }
+
+    .quote {
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .name {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <img id="portrait" alt="Designer portrait">
+  <div class="quote" id="quote"></div>
+  <div class="name" id="name"></div>
+</div>
+
+<script>
+const designers = [
+  {
+    name: "Coco Chanel",
+    quote: "Fashion fades, only style remains the same.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Coco_Chanel_1931.jpg"
+  },
+  {
+    name: "Alexander McQueen",
+    quote: "You have to know the rules to break them.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Alexander_McQueen.jpg"
+  },
+  {
+    name: "Vivienne Westwood",
+    quote: "Buy less, choose well, make it last.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Vivienne_Westwood.jpg"
+  },
+  {
+    name: "Christian Dior",
+    quote: "Elegance must be the right combination of distinction, naturalness, care and simplicity.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Christian_Dior_1954.jpg"
+  }
+];
+
+// Change quote once per day
+const today = new Date();
+const dayNumber = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
+const pick = designers[dayNumber % designers.length];
+
+// Display content
+document.getElementById("quote").textContent = `"${pick.quote}"`;
+document.getElementById("name").textContent = pick.name;
+document.getElementById("portrait").src = pick.image;
+</script>
+
+</body>
+</html>
